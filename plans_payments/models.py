@@ -164,7 +164,7 @@ def change_payment_status(sender, *args, **kwargs):
             order.user.userplan.recurring.save()
 
 
-@receiver(account_automatic_renewal)
+@receiver(account_automatic_renewal, sender=Payment)
 def renew_accounts(sender, user, *args, **kwargs):
     userplan = user.userplan
     if (
